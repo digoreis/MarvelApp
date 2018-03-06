@@ -39,6 +39,7 @@
 		9E36DD49204CC1D100670F5E /* RequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E36DD48204CC1D100670F5E /* RequesterTests.swift */; };
 		9E36DD4B204CC80D00670F5E /* ResourceURIRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E36DD4A204CC80D00670F5E /* ResourceURIRequestTests.swift */; };
 		9E36DD4D204E302500670F5E /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E36DD4C204E302500670F5E /* CharactersViewModel.swift */; };
+		9E36DD50204EDC7B00670F5E /* UIImageViewAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E36DD4F204EDC7B00670F5E /* UIImageViewAsync.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		9E36DD48204CC1D100670F5E /* RequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequesterTests.swift; sourceTree = "<group>"; };
 		9E36DD4A204CC80D00670F5E /* ResourceURIRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceURIRequestTests.swift; sourceTree = "<group>"; };
 		9E36DD4C204E302500670F5E /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
+		9E36DD4F204EDC7B00670F5E /* UIImageViewAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewAsync.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 		9E0BE6B32045CC520045C7C4 /* MarvelApp */ = {
 			isa = PBXGroup;
 			children = (
+				9E36DD4E204EDC6000670F5E /* Extensions */,
 				9E0BE6F520488E0D0045C7C4 /* Database */,
 				9E0BE6F22045F9E80045C7C4 /* Model */,
 				9E0BE6E72045CDE40045C7C4 /* Resources */,
@@ -272,6 +275,14 @@
 				9E0BE6F620488E2B0045C7C4 /* CharactersDatabase.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		9E36DD4E204EDC6000670F5E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9E36DD4F204EDC7B00670F5E /* UIImageViewAsync.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,6 +433,7 @@
 				9E0BE6F42045F9FD0045C7C4 /* Character.swift in Sources */,
 				9E0BE6B52045CC520045C7C4 /* AppDelegate.swift in Sources */,
 				9E061902204B127600516A59 /* SupportModels.swift in Sources */,
+				9E36DD50204EDC7B00670F5E /* UIImageViewAsync.swift in Sources */,
 				9E061900204B076300516A59 /* ResourceURIRequest.swift in Sources */,
 				9E36DD4D204E302500670F5E /* CharactersViewModel.swift in Sources */,
 				9E0618FE204AF31400516A59 /* PayloadRequest.swift in Sources */,

@@ -21,6 +21,8 @@ class CharactersProvider {
     private var pageSize = 20
     private var total = 0
 
+    private var running = false
+
     private let pathForResource = "/v1/public/characters"
 
     init(delegate: CharactersProviderDelegate) {
@@ -64,7 +66,8 @@ class CharactersProvider {
     }
 
     func getPage() {
-
+        guard running == false else { return }
+        running = true
         guard (self.total / pageSize) <= page else { return }
 
         let request = Request(path: self.pathForResource, params: getParams())
@@ -79,6 +82,7 @@ class CharactersProvider {
             case .error(let error):
                 self.delegate?.finishLoadPage(error: error)
             }
+            self.running = false
         }
     }
 

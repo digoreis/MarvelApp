@@ -13,7 +13,7 @@
         <!--Characters View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CharactersViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CharactersViewController" customModule="MarvelApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,34 +54,34 @@
                                         <rect key="frame" x="0.0" y="140" width="375" height="507"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="b4V-4B-1Ee">
-                                            <size key="itemSize" width="122" height="148"/>
+                                            <size key="itemSize" width="172" height="198"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="n2R-Zh-eFb" customClass="CharactersCollectionCell" customModule="MarvelApp" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="0.0" width="122" height="148"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="charCell" id="n2R-Zh-eFb" customClass="CharactersCollectionCell" customModule="MarvelApp" customModuleProvider="target">
+                                                <rect key="frame" x="10" y="0.0" width="172" height="198"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="122" height="148"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="172" height="198"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="GZs-6R-tLG">
-                                                            <rect key="frame" x="0.0" y="0.0" width="122" height="148"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="GZs-6R-tLG" customClass="UIImageViewAsync" customModule="MarvelApp" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="172" height="198"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzr-ej-FVa">
-                                                            <rect key="frame" x="0.0" y="118" width="122" height="30"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xzr-ej-FVa">
+                                                            <rect key="frame" x="0.0" y="158" width="172" height="40"/>
                                                             <color key="backgroundColor" red="0.15684100985527039" green="0.15687525272369385" blue="0.15683883428573608" alpha="0.62438889953987731" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="LNo-ee-4gL"/>
+                                                                <constraint firstAttribute="height" constant="40" id="LNo-ee-4gL"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5G-NZ-vqd">
-                                                            <rect key="frame" x="82" y="0.0" width="40" height="40"/>
+                                                            <rect key="frame" x="132" y="0.0" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="0H8-sm-BGN"/>
                                                                 <constraint firstAttribute="height" constant="40" id="r3I-7V-mck"/>

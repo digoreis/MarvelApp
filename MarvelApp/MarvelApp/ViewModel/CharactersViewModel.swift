@@ -14,19 +14,37 @@ protocol CharactersViewModelFeedback {
 
 protocol CharactersViewModelProtocol {
     func loadData()
+    func countData() -> Int
+    func character(index: Int) -> Character?
 }
 
 class CharactersViewModel: CharactersViewModelProtocol,CharactersProviderDelegate {
 
-    let provider: CharactersProvider
-    let feedback: CharactersViewModelFeedback
+    var provider: CharactersProvider?
+    let feedback: CharactersViewModelFeedback?
 
-    init(feedback: CharactersViewModelFeedback ) {
+
+    init(feedback: CharactersViewModelFeedback? ) {
         self.feedback = feedback
+        configure()
+    }
+
+    fileprivate func configure() {
         self.provider = CharactersProvider(delegate: self)
     }
-    func loadData() {
 
+    func loadData() {
+        self.provider?.getPage()
+    }
+
+
+
+    func countData() -> Int {
+        return CharactersDatabase.shared.count()
+    }
+
+    func character(index: Int) -> Character? {
+        return CharactersDatabase.shared.get(index: index)
     }
 
 }
@@ -34,14 +52,14 @@ class CharactersViewModel: CharactersViewModelProtocol,CharactersProviderDelegat
 extension CharactersViewModel {
     func finishLoadPage(error: Error?) {
         guard error == nil else { return }
-        feedback.reloadData()
+        feedback?.reloadData()
     }
 
     func searchResult(data: [Character]?, error: Error?) {
-        <#code#>
+
     }
 
     func finishFavoriteCharacter(data: Character?, error: Error?) {
-        <#code#>
+        
     }
 }

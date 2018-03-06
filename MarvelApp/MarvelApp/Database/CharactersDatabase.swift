@@ -11,7 +11,7 @@ import Foundation
 class CharactersDatabase {
     static let shared = CharactersDatabase()
 
-    fileprivate var items = Set<Character>()
+    fileprivate var items = [Character]()
     public var favoriteID : Int?
 
     init() {
@@ -24,24 +24,35 @@ class CharactersDatabase {
     }
 
     public func addItem(_ item: Character) -> Bool {
-        let result = items.insert(item)
-        return result.inserted
+        items.append(item)
+        return true
     }
 
     public func addItems(characters: [Character]) {
-        self.items = self.items.union(characters)
+        self.items.append(contentsOf: characters)
     }
 
     public func removeItem(_ item: Character) -> Bool {
-        return (items.remove(item) != nil)
+        guard let index = items.index(of: item) else { return false}
+        items.remove(at: index)
+        return true
     }
 
     public func getItems() -> [Character] {
-        return Array(self.items)
+        return self.items
+    }
+
+    public func count() -> Int {
+        return self.items.count
+    }
+
+    public func get(index: Int) -> Character? {
+        guard index < self.items.count else { return nil }
+        return  self.items[index]
     }
 
     public func clean() {
-        self.items = Set<Character>()
+        self.items = [Character]()
     }
 
     deinit {
