@@ -28,6 +28,11 @@ class CharactersProviderDelegateMock : CharactersProviderDelegate {
         self.expectation.fulfill()
     }
 
+    func finishFavoriteCharacter(data: MarvelApp.Character?, error: Error?) {
+        self.dataFavorite = data
+        self.expectation.fulfill()
+    }
+
 
     func finishLoadPage(error: Error?) {
         guard error == nil else { print(error ?? "") ; self.expectation.fulfill() ; return }
@@ -38,6 +43,7 @@ class CharactersProviderDelegateMock : CharactersProviderDelegate {
     let expectation: XCTestExpectation
 
     var dataSearch : [MarvelApp.Character]?
+    var dataFavorite : MarvelApp.Character?
 
     init(expectation: XCTestExpectation) {
         self.expectation = expectation

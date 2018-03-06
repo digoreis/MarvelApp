@@ -11,6 +11,7 @@ import Foundation
 protocol CharactersProviderDelegate: class {
     func finishLoadPage(error: Error?)
     func searchResult(data: [Character]?, error: Error?)
+    func finishFavoriteCharacter(data: Character?, error: Error?)
 }
 class CharactersProvider {
 
@@ -45,6 +46,19 @@ class CharactersProvider {
                 self.delegate?.searchResult(data: value.data.results, error: nil)
             case .error(let error):
                 self.delegate?.searchResult(data: nil, error: error)
+            }
+        }
+    }
+
+    func getFavorite(id: Int) {
+        let request = Request(path: "\(self.pathForResource)/\(id)", params: [:])
+        Requester<Character>.get(request) { result in
+            switch result {
+            case .sucess(let value):
+                guard let value = value as? PayloadRequest<Character> else { return }
+                self.delegate?.finishFavoriteCharacter(data: value.data.results.first, error: nil)
+            case .error(let error):
+                self.delegate?.finishFavoriteCharacter(data: nil, error: error)
             }
         }
     }

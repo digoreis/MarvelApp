@@ -55,4 +55,10 @@ class CharacterProviderTests: XCTestCase {
         }
     }
 
+    func testFavoriteData() {
+        self.provider?.getFavorite(id: 1011334)
+        waitForExpectations(timeout: 30, handler: nil)
+        XCTAssert(self.mock?.dataFavorite?.id == 1011334)
+    }
+
 }
