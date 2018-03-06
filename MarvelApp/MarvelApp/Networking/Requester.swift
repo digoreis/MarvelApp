@@ -8,49 +8,46 @@
 
 import Foundation
 
+// MARK: - Enum to Result of API Calls
 enum RequestResult {
     case sucess(Codable?)
     case error(Error)
 }
 
+// MARK: - Enum of Error for API call
 enum NetworkingError : Error {
     case noData
     case noHttpError
     case notFound
+    case parserError
     case internalError
 }
 
+// MARK: - Protocol to Define methods to a Class to be a Resquestable
 protocol Requestable {
     static func get(_ request: Request, callback: @escaping (RequestResult) -> Void)
 }
 
+// MARK: - Requester Class to Abstract Payload of Marvel API
 class Requester<T : Codable>: Requestable {
 
     static func get(_ request: Request, callback: @escaping (RequestResult) -> Void) {
         guard let url = request.generateURL() else { return }
 
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard error == nil else {
-                if let r = response {
-                    callback(.error(self.httpError(r)))
-                } else {
-                    callback(.error(NetworkingError.noHttpError))
-                }
-                return
-            }
+            guard error == nil else { callback(.error(self.httpError(response))) ; return }
             guard let data = data else { callback(.error(NetworkingError.noData)) ; return }
             do {
                 let jsonObject = try JSONDecoder().decode(PayloadRequest<T>.self, from: data)
                 callback(.sucess(jsonObject))
-            } catch let error{
-                callback(.error(NetworkingError.noHttpError))
-                print(error)
+            } catch {
+                callback(.error(NetworkingError.parserError))
             }
         }
         task.resume()
     }
 
-    static func httpError(_ response: URLResponse) -> NetworkingError {
+    static func httpError(_ response: URLResponse?) -> NetworkingError {
         guard let responseHttp = response as? HTTPURLResponse else { return .noHttpError }
         let baseError = responseHttp.statusCode/100
         switch baseError {

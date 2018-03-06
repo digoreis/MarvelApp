@@ -8,11 +8,14 @@
 
 import Foundation
 
+// MARK: - Protocol abount behavior of provider Information about Marvel Characters ( API and Local Cache )
 protocol CharactersProviderDelegate: class {
     func finishLoadPage(error: Error?)
     func searchResult(data: [Character]?, error: Error?)
     func finishFavoriteCharacter(data: Character?, error: Error?)
 }
+
+// MARK: - Implementation of Provider to Characters of Marvel API and Local Cache
 class CharactersProvider {
 
     weak var delegate: CharactersProviderDelegate?
