@@ -49,7 +49,11 @@ extension CharactersViewController: CharactersViewModelFeedback {
 extension CharactersViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel?.countData() ?? 0
+        let total = self.viewModel?.countData() ?? 0
+        if total > 0 {
+            load.stopAnimating()
+        }
+        return total
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
