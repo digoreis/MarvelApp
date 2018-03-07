@@ -13,6 +13,13 @@ enum CharacterDetailFields {
     case text(String,String)
 }
 
+enum CharacterDataFields {
+    case comics([Comic])
+    case events([Event])
+    case stories([Story])
+    case series([Serie])
+}
+
 extension CharacterDetailFields {
     public func cellID() -> String {
         switch self {

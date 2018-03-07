@@ -12,7 +12,12 @@ class CharactersDatabase {
     static let shared = CharactersDatabase()
 
     fileprivate var items = [Character]()
-    public var favoriteID : Int?
+    public var favoriteID : Int? {
+        didSet {
+            saveLocal()
+        }
+
+    }
 
     init() {
         let defaults = UserDefaults.standard
@@ -55,7 +60,7 @@ class CharactersDatabase {
         self.items = [Character]()
     }
 
-    deinit {
+    private func saveLocal() {
         let defaults = UserDefaults.standard
         defaults.set(favoriteID, forKey: "MarvelAppFavoriteID")
     }

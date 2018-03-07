@@ -22,33 +22,21 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VKN-yQ-NUE">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="OSQ-IT-kVI">
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search here your character" translatesAutoresizingMaskIntoConstraints="NO" id="OSQ-IT-kVI">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="tqa-Tp-Q9n"/>
                                         </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
-                                            <outlet property="delegate" destination="BYZ-38-t0r" id="F4t-Ob-smM"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="E11-1W-NJZ"/>
                                         </connections>
                                     </searchBar>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nY9-oD-3tC">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nY9-oD-3tC" customClass="UIFavoriteCharacter" customModule="MarvelApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="60" width="375" height="80"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Any favorite character selected." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DvA-jR-n3H">
-                                                <rect key="frame" x="30" y="30" width="315" height="20"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="DvA-jR-n3H" firstAttribute="leading" secondItem="nY9-oD-3tC" secondAttribute="leading" constant="30" id="8Zq-0v-LHs"/>
-                                            <constraint firstItem="DvA-jR-n3H" firstAttribute="top" secondItem="nY9-oD-3tC" secondAttribute="top" constant="30" id="NE3-aN-9UV"/>
                                             <constraint firstAttribute="height" constant="80" id="S1u-Zn-kUB"/>
-                                            <constraint firstAttribute="bottom" secondItem="DvA-jR-n3H" secondAttribute="bottom" constant="30" id="WhS-As-D98"/>
-                                            <constraint firstAttribute="trailing" secondItem="DvA-jR-n3H" secondAttribute="trailing" constant="30" id="q54-yC-V9d"/>
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hpd-hi-3Ru">
@@ -81,7 +69,7 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5G-NZ-vqd">
+                                                        <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5G-NZ-vqd">
                                                             <rect key="frame" x="127" y="5" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="0H8-sm-BGN"/>
@@ -107,6 +95,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="GZs-6R-tLG" secondAttribute="trailing" id="wF3-Tm-qJo"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="favoriteBtn" destination="x5G-NZ-vqd" id="1FD-hC-Kvz"/>
                                                     <outlet property="imageView" destination="GZs-6R-tLG" id="OJq-Bu-7lG"/>
                                                     <outlet property="name" destination="xzr-ej-FVa" id="pGN-L4-HEx"/>
                                                 </connections>
@@ -142,6 +131,7 @@
                     <navigationItem key="navigationItem" title="Characters" id="4Ro-GV-2rK"/>
                     <connections>
                         <outlet property="collection" destination="hpd-hi-3Ru" id="aXs-Gv-ikx"/>
+                        <outlet property="favoriteView" destination="nY9-oD-3tC" id="pdi-39-rQF"/>
                         <outlet property="load" destination="Ali-Yr-Xgr" id="wao-N5-5SL"/>
                         <outlet property="searchDisplayController" destination="IYI-v2-hD2" id="aw8-wX-W51"/>
                         <segue destination="BUn-ps-p6L" kind="show" identifier="detailCharacterSegue" id="QJl-GV-yWA"/>
@@ -151,7 +141,6 @@
                 <searchDisplayController id="IYI-v2-hD2">
                     <connections>
                         <outlet property="delegate" destination="BYZ-38-t0r" id="ORp-UN-sKY"/>
-                        <outlet property="searchBar" destination="OSQ-IT-kVI" id="vgq-Pm-V81"/>
                         <outlet property="searchContentsController" destination="BYZ-38-t0r" id="yfx-UJ-QcP"/>
                         <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="coa-FR-ms3"/>
                         <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="Usp-9B-gVH"/>
@@ -269,11 +258,27 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="p4c-hh-THS" id="YUH-Hc-EhC"/>
+                        <segue destination="U0d-qB-atl" kind="presentation" identifier="expandDetail" modalPresentationStyle="formSheet" modalTransitionStyle="flipHorizontal" id="3pm-7o-msU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kep-K2-I6b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1551.2" y="133.5832083958021"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="MYf-Y1-Q9i">
+            <objects>
+                <viewController id="U0d-qB-atl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gvK-0R-FM5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="a5q-fi-hnA"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r8X-61-EB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1551" y="874"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sHU-56-NQD">

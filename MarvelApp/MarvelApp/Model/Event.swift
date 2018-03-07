@@ -10,6 +10,7 @@ import Foundation
 
 class Event: Codable, ResourceURIRequestable {
 
+
     let resourceURI: String
     let name: String?
     var id: Int?
@@ -22,6 +23,10 @@ class Event: Codable, ResourceURIRequestable {
     var thumbnail: Thumbnail?
     var next: Event?
     var previous: Event?
+
+    func isLoaded() -> Bool {
+        return (title != nil)
+    }
 
     func populate(item: Event) {
         self.id = item.id

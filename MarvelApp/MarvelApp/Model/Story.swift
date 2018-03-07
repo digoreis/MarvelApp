@@ -20,6 +20,10 @@ class Story: Codable, ResourceURIRequestable {
     var thumbnail: Thumbnail?
     var etag: String?
 
+    func isLoaded() -> Bool {
+        return (self.title != nil)
+    }
+
     func populate(item: Story) {
         self.id = item.id
         self.title = item.title

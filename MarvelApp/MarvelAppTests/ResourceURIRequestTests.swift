@@ -89,6 +89,7 @@ class ResourceURIRequestTests: XCTestCase {
             do {
                 let jsonObject1 = try JSONDecoder().decode(SerieMutable.self, from: data)
                 jsonObject1.resourceURI = ""
+                jsonObject1.title = nil
                 jsonObject1.load(callback: { status in
                     XCTAssertFalse(status)
                     expectation.fulfill()

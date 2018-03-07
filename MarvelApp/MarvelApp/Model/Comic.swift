@@ -22,8 +22,10 @@ class Comic: Codable, ResourceURIRequestable {
     var dates: [DateObject]?
     var thumbnail: Thumbnail?
     var images: [Thumbnail]?
-
-
+    
+    func isLoaded() -> Bool {
+        return (title != nil)
+    }
 
     func populate(item: Comic) {
         self.title = item.title

@@ -10,11 +10,13 @@ import Foundation
 
 protocol ResourceURIRequestable : Codable, AnyObject {
     var resourceURI : String { get }
+    func isLoaded() -> Bool
     func populate(item: Self)
 }
 
 extension ResourceURIRequestable {
     public func load(callback: @escaping (Bool) -> Void) {
+        guard isLoaded() == false else { callback(true) ; return }
         let request = Request(path: self.resourceURI, params: [:])
         Requester<Self>.get(request) { result in
 

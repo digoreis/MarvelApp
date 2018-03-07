@@ -24,6 +24,10 @@ class Serie: Codable, ResourceURIRequestable {
     var next: Serie?
     var previous: Serie?
 
+    func isLoaded() -> Bool {
+        return (title != nil)
+    }
+
     func populate(item: Serie) {
         self.id = item.id
         self.title = item.title

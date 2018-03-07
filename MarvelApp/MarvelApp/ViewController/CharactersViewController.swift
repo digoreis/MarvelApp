@@ -12,6 +12,7 @@ final class CharactersViewController: UIViewController {
 
     @IBOutlet private var collection: UICollectionView!
     @IBOutlet private var load: UIActivityIndicatorView!
+    @IBOutlet private var favoriteView: UIFavoriteCharacter!
 
     fileprivate var viewModel: CharactersViewModelProtocol?
     fileprivate var originFrame: CGRect?
@@ -21,16 +22,21 @@ final class CharactersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CharactersViewModel(feedback: self)
+        self.viewModel?.loadFavorite()
         self.viewModel?.loadData()
         self.navigationController?.delegate = self
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "detailCharacterSegue" else { return }
-        guard let index = sender as? Int else { return }
-        guard let destination = segue.destination as? CharacterDetailViewController else { return }
-        guard let item = self.viewModel?.character(index: index) else { return }
-        destination.viewModel = CharactersDetailViewModel(item: item)
+        if let index = sender as? Int {
+            guard let destination = segue.destination as? CharacterDetailViewController else { return }
+            guard let item = self.viewModel?.character(index: index) else { return }
+            destination.viewModel = CharactersDetailViewModel(item: item)
+        } else if let item = sender as? Character {
+            guard let destination = segue.destination as? CharacterDetailViewController else { return }
+            destination.viewModel = CharactersDetailViewModel(item: item)
+        }
     }
 }
 
@@ -56,6 +62,28 @@ extension CharactersViewController: CharactersViewModelFeedback {
             self.collection.reloadData()
         }
     }
+
+    func reloadFavorite() {
+        guard let favorite = self.viewModel?.favoriteCharacter else {
+            self.favoriteView.reset()
+            return
+        }
+        DispatchQueue.main.async {
+            self.collection.visibleCells.forEach { item in
+                if let cell = item as? CharactersCollectionCell {
+                    if cell.getID() != favorite.id {
+                        cell.cleanFavorite()
+                    }
+                }
+            }
+            self.favoriteView.configureFavorite(favorite) { item in
+                    self.originImage = self.favoriteView.favoriteImage.image
+                    self.originFrame =  self.favoriteView.favoriteImage.frame
+
+                self.performSegue(withIdentifier: "detailCharacterSegue", sender: item)
+            }
+        }
+    }
 }
 
 // MARK: - Collection DataSource Methods using ViewModel
@@ -74,7 +102,7 @@ extension CharactersViewController: UICollectionViewDataSource {
         nextPage(index: indexPath.row)
         if let charCell = cell as? CharactersCollectionCell,
             let char = self.viewModel?.character(index: indexPath.row) {
-            charCell.populate(item: char)
+            charCell.populate(item: char,viewModel: self.viewModel)
         }
         return cell
     }
@@ -97,6 +125,12 @@ extension CharactersViewController: UICollectionViewDelegate {
         }
 
         self.performSegue(withIdentifier: "detailCharacterSegue", sender: indexPath.row)
+    }
+}
+
+extension CharactersViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.viewModel?.searchString = searchText
     }
 }
 

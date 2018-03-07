@@ -66,6 +66,10 @@ class SerieMutable: Codable, ResourceURIRequestable {
     var next: Serie?
     var previous: Serie?
 
+    func isLoaded() -> Bool {
+        return (title != nil)
+    }
+
     func populate(item: SerieMutable) {
         self.id = item.id
         self.title = item.title
