@@ -14,6 +14,9 @@ class UIImageViewAsync: UIImageView {
 }
 
 extension UIImageViewAsync {
+    public func cancelImageDownload() {
+        task?.cancel()
+    }
     public func imageFromServerURL(urlString: String) {
         task?.cancel()
         guard let url = URL(string: urlString) else { return }

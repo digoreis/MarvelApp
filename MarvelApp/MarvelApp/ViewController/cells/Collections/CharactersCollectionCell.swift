@@ -33,17 +33,24 @@ class CharactersCollectionCell: UICollectionViewCell {
         return item?.id ?? 0
     }
 
+    public func setImage(item: Character) {
+        if let path = item.thumbnail?.path, let ext = item.thumbnail?.extension {
+            self.imageView.image = #imageLiteral(resourceName: "placeholder")
+            self.imageView.imageFromServerURL(urlString: "\(path).\(ext)")
+        }
+    }
+
     public func populate(item: Character, viewModel: CharactersViewModelProtocol? = nil, favoriteID : Int = 0) {
         self.item = item
         self.viewModel = viewModel
         self.name.text = item.name
-        if let path = item.thumbnail?.path, let ext = item.thumbnail?.extension {
-            self.imageView.imageFromServerURL(urlString: "\(path).\(ext)")
-        }
         guard let idFav = self.viewModel?.favoriteCharacter?.id else { favoriteBtn.isSelected = false ; return}
         favoriteBtn.isSelected = (item.id == idFav)
     }
 
+    public func cancelDownload() {
+        self.imageView.cancelImageDownload()
+    }
     public func image() -> UIImage? {
         return imageView.image
     }

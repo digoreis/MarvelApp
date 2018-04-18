@@ -50,6 +50,8 @@
 		9E36DD6B204F2F8000670F5E /* CharacterDetailFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E36DD6A204F2F8000670F5E /* CharacterDetailFields.swift */; };
 		9E36DD6E204F4C6900670F5E /* UIFavoriteCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E36DD6D204F4C6900670F5E /* UIFavoriteCharacter.swift */; };
 		9E36DD70204F7CF500670F5E /* UIFavoriteCharacter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E36DD6F204F7CF500670F5E /* UIFavoriteCharacter.xib */; };
+		9E7346B12087BE6800A7C2A5 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7346AF2087BE6800A7C2A5 /* PromiseKit.framework */; };
+		9E7346B22087BE6800A7C2A5 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7346B02087BE6800A7C2A5 /* ReSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,11 @@
 		9E36DD6A204F2F8000670F5E /* CharacterDetailFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailFields.swift; sourceTree = "<group>"; };
 		9E36DD6D204F4C6900670F5E /* UIFavoriteCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFavoriteCharacter.swift; sourceTree = "<group>"; };
 		9E36DD6F204F7CF500670F5E /* UIFavoriteCharacter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIFavoriteCharacter.xib; sourceTree = "<group>"; };
+		9E7346AD2087BDC400A7C2A5 /* iOS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iOS; path = Carthage/Build/iOS; sourceTree = "<group>"; };
+		9E7346AF2087BE6800A7C2A5 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
+		9E7346B02087BE6800A7C2A5 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
+		9ECA97132087C84C008676CF /* ReSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ReSwift.framework.dSYM; path = Carthage/Build/iOS/ReSwift.framework.dSYM; sourceTree = "<group>"; };
+		9ECA97142087C84C008676CF /* PromiseKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = PromiseKit.framework.dSYM; path = Carthage/Build/iOS/PromiseKit.framework.dSYM; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +134,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E7346B12087BE6800A7C2A5 /* PromiseKit.framework in Frameworks */,
+				9E7346B22087BE6800A7C2A5 /* ReSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,10 +171,13 @@
 		9E0BE6A82045CC520045C7C4 = {
 			isa = PBXGroup;
 			children = (
+				9ECA97142087C84C008676CF /* PromiseKit.framework.dSYM */,
+				9ECA97132087C84C008676CF /* ReSwift.framework.dSYM */,
 				9E0BE6B32045CC520045C7C4 /* MarvelApp */,
 				9E0BE6C82045CC530045C7C4 /* MarvelAppTests */,
 				9E0BE6D32045CC530045C7C4 /* MarvelAppUITests */,
 				9E0BE6B22045CC520045C7C4 /* Products */,
+				9E7346AC2087BDC400A7C2A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -355,6 +367,16 @@
 			path = UIComponents;
 			sourceTree = "<group>";
 		};
+		9E7346AC2087BDC400A7C2A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E7346AF2087BE6800A7C2A5 /* PromiseKit.framework */,
+				9E7346B02087BE6800A7C2A5 /* ReSwift.framework */,
+				9E7346AD2087BDC400A7C2A5 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -365,6 +387,7 @@
 				9E0BE6AD2045CC520045C7C4 /* Sources */,
 				9E0BE6AE2045CC520045C7C4 /* Frameworks */,
 				9E0BE6AF2045CC520045C7C4 /* Resources */,
+				9ECA97172087C8C6008676CF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -490,6 +513,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9ECA97172087C8C6008676CF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReSwift.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PromiseKit.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9E0BE6AD2045CC520045C7C4 /* Sources */ = {
@@ -696,6 +739,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/MarvelApp/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.reis.MarvelApp;
@@ -715,6 +762,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/MarvelApp/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.reis.MarvelApp;

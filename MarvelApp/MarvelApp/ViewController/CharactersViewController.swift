@@ -97,6 +97,13 @@ extension CharactersViewController: UICollectionViewDataSource {
         return total
     }
 
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let charCell = cell as? CharactersCollectionCell,
+            let char = self.viewModel?.character(index: indexPath.row) {
+                charCell.setImage(item: char)
+        }
+    }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CharactersCollectionCell.self), for: indexPath)
         nextPage(index: indexPath.row)
@@ -105,6 +112,12 @@ extension CharactersViewController: UICollectionViewDataSource {
             charCell.populate(item: char,viewModel: self.viewModel)
         }
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let charCell = cell as? CharactersCollectionCell {
+            charCell.cancelDownload()
+        }
     }
 
     fileprivate func nextPage(index: Int) {

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import ReSwift
 
 extension Date {
     func toMillis() -> Int64 {
