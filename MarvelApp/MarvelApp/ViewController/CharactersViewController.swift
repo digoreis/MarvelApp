@@ -18,7 +18,6 @@ final class CharactersViewController: UIViewController {
     fileprivate var originFrame: CGRect?
     fileprivate var originImage: UIImage?
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = CharactersViewModel(feedback: self)
@@ -41,8 +40,11 @@ final class CharactersViewController: UIViewController {
 }
 
 extension CharactersViewController: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
+    func navigationController(_ navigationController: UINavigationController,
+                              animationControllerFor operation: UINavigationControllerOperation,
+                              from fromVC: UIViewController,
+                              to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
         guard let frame = self.originFrame else { return nil }
         guard let image = self.originImage else { return nil }
 
@@ -97,24 +99,30 @@ extension CharactersViewController: UICollectionViewDataSource {
         return total
     }
 
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
         if let charCell = cell as? CharactersCollectionCell,
             let char = self.viewModel?.character(index: indexPath.row) {
                 charCell.setImage(item: char)
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CharactersCollectionCell.self), for: indexPath)
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let strCellID = String(describing: CharactersCollectionCell.self)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: strCellID, for: indexPath)
         nextPage(index: indexPath.row)
         if let charCell = cell as? CharactersCollectionCell,
             let char = self.viewModel?.character(index: indexPath.row) {
-            charCell.populate(item: char,viewModel: self.viewModel)
+            charCell.populate(item: char, viewModel: self.viewModel)
         }
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didEndDisplaying cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
         if let charCell = cell as? CharactersCollectionCell {
             charCell.cancelDownload()
         }
@@ -146,4 +154,3 @@ extension CharactersViewController: UISearchBarDelegate {
         self.viewModel?.searchString = searchText
     }
 }
-

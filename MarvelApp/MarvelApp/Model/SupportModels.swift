@@ -9,8 +9,8 @@
 import Foundation
 
 struct Thumbnail: Codable {
-    var path : String
-    var `extension` : String
+    var path: String
+    var `extension`: String
 }
 
 struct DateObject: Codable {
@@ -19,6 +19,6 @@ struct DateObject: Codable {
 }
 
 struct Url: Codable {
-    var type : String
-    var url : String
+    var type: String
+    var url: String
 }

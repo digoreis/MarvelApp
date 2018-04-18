@@ -20,7 +20,7 @@ extension XCTestCase {
     }
 }
 
-class CharactersProviderDelegateMock : CharactersProviderDelegate {
+class CharactersProviderDelegateMock: CharactersProviderDelegate {
 
     func searchResult(data: [MarvelApp.Character]?, error: Error?) {
         guard error == nil else { print(error ?? "") ; self.expectation.fulfill() ; return }
@@ -33,17 +33,15 @@ class CharactersProviderDelegateMock : CharactersProviderDelegate {
         self.expectation.fulfill()
     }
 
-
     func finishLoadPage(error: Error?) {
         guard error == nil else { print(error ?? "") ; self.expectation.fulfill() ; return }
         self.expectation.fulfill()
     }
 
-
     let expectation: XCTestExpectation
 
-    var dataSearch : [MarvelApp.Character]?
-    var dataFavorite : MarvelApp.Character?
+    var dataSearch: [MarvelApp.Character]?
+    var dataFavorite: MarvelApp.Character?
 
     init(expectation: XCTestExpectation) {
         self.expectation = expectation

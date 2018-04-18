@@ -13,7 +13,7 @@ class DetailTextTableViewCell: UITableViewCell {
     @IBOutlet fileprivate var lblTitle: UILabel!
     @IBOutlet fileprivate var lblText: UITextView!
 
-    func setLabel(label: String,text: String) {
+    func setLabel(label: String, text: String) {
         self.lblTitle.text = label
         self.lblText.text = text
     }

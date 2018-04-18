@@ -10,7 +10,6 @@ import Foundation
 
 class Event: Codable, ResourceURIRequestable {
 
-
     let resourceURI: String
     let name: String?
     var id: Int?

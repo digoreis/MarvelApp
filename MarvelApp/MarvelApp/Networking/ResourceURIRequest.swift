@@ -8,8 +8,8 @@
 
 import Foundation
 
-protocol ResourceURIRequestable : Codable, AnyObject {
-    var resourceURI : String { get }
+protocol ResourceURIRequestable: Codable, AnyObject {
+    var resourceURI: String { get }
     func isLoaded() -> Bool
     func populate(item: Self)
 }

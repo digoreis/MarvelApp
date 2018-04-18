@@ -13,7 +13,7 @@ struct PayloadData<T: Codable> : Codable {
     let limit: Int
     let total: Int
     let count: Int
-    let results : [T]
+    let results: [T]
 }
 struct PayloadRequest<T: Codable>: Codable {
     let code: Int

@@ -30,7 +30,7 @@ class CharactersDetailViewModel: CharactersDetailViewModelProtocol {
         return cells.count
     }
 
-    public func item(index: Int) -> CharacterDetailFields?  {
+    public func item(index: Int) -> CharacterDetailFields? {
         guard index < cells.count else { return nil }
         return cells[index]
     }

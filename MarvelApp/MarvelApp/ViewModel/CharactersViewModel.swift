@@ -18,27 +18,27 @@ protocol CharactersViewModelProtocol {
     func loadData()
     func countData() -> Int
     func character(index: Int) -> Character?
-    var searchString : String? { get set }
-    var favoriteCharacter : Character? { get set }
+    var searchString: String? { get set }
+    var favoriteCharacter: Character? { get set }
 }
 
-final class CharactersViewModel: CharactersViewModelProtocol,CharactersProviderDelegate {
+final class CharactersViewModel: CharactersViewModelProtocol, CharactersProviderDelegate {
 
     fileprivate var provider: CharactersProvider?
     fileprivate let feedback: CharactersViewModelFeedback?
 
-    fileprivate var searchTempResult : [Character]?
+    fileprivate var searchTempResult: [Character]?
 
-    var favoriteCharacter : Character? = nil {
+    var favoriteCharacter: Character? = nil {
         didSet {
             if let fav = favoriteCharacter {
-                self.provider?.saveFavoriteID(id: fav.id)
+                self.provider?.saveFavoriteID(idFavorite: fav.id)
             }
             feedback?.reloadFavorite()
         }
     }
-    
-    var searchString : String? {
+
+    var searchString: String? {
         didSet {
             if let searchString = searchString, !searchString.isEmpty {
                 provider?.doSearch(name: searchString)
@@ -62,8 +62,6 @@ final class CharactersViewModel: CharactersViewModelProtocol,CharactersProviderD
         self.provider?.getPage()
     }
 
-
-
     func countData() -> Int {
         if let temp = searchTempResult {
             return temp.count
@@ -81,7 +79,7 @@ final class CharactersViewModel: CharactersViewModelProtocol,CharactersProviderD
 
     func loadFavorite() {
         guard let id = self.provider?.getFavoriteID() else { return }
-        self.provider?.getFavorite(id: id)
+        self.provider?.getFavorite(idFavorite: id)
     }
 
 }

@@ -13,7 +13,7 @@ class CharacterProviderTests: XCTestCase {
 
     var provider: CharactersProvider?
     var mock: CharactersProviderDelegateMock?
-    
+
     override func setUp() {
         let expectation = self.expectation(description: "NetworkingRequest1")
         self.mock = CharactersProviderDelegateMock(expectation: expectation)

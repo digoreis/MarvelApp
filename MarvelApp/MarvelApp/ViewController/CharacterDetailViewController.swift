@@ -13,7 +13,6 @@ class CharacterDetailViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     var viewModel: CharactersDetailViewModelProtocol?
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()

@@ -10,7 +10,7 @@ import XCTest
 @testable import MarvelApp
 
 class ResourceURIRequestTests: XCTestCase {
-    
+
     func testComicLoad() {
         let expectation = self.expectation(description: "LOAD")
         if let data = loadDataFromFile(name: "comic") {

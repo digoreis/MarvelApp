@@ -50,7 +50,7 @@ extension Request {
     }
 
     private func MD5(string: String) -> Data {
-        let messageData = string.data(using:.utf8)!
+        let messageData = string.data(using: .utf8)!
         var digestData = Data(count: Int(CC_MD5_DIGEST_LENGTH))
 
         _ = digestData.withUnsafeMutableBytes {digestBytes in

@@ -13,10 +13,19 @@ class CharactersDatabaseTests: XCTestCase {
 
     let referenceDatabase = CharactersDatabase.shared
 
-        
     func testAddItem() {
         referenceDatabase.clean()
-        let c = MarvelApp.Character(id: 99, name: "Test", description: "test", modified: "", thumbnail: nil, resourceURI: "", comics: nil, series: nil, stories: nil, events: nil, urls: nil)
+        let c = MarvelApp.Character(id: 99,
+                                    name: "Test",
+                                    description: "test",
+                                    modified: "",
+                                    thumbnail: nil,
+                                    resourceURI: "",
+                                    comics: nil,
+                                    series: nil,
+                                    stories: nil,
+                                    events: nil,
+                                    urls: nil)
         XCTAssert(referenceDatabase.addItem(c))
         let items = referenceDatabase.getItems()
         XCTAssert(items.first?.id == 99)
@@ -24,7 +33,17 @@ class CharactersDatabaseTests: XCTestCase {
     }
 
     func testRemove() {
-        let c = MarvelApp.Character(id: 99, name: "Test", description: "test", modified: "", thumbnail: nil, resourceURI: "", comics: nil, series: nil, stories: nil, events: nil, urls: nil)
+        let c = MarvelApp.Character(id: 99,
+                                    name: "Test",
+                                    description: "test",
+                                    modified: "",
+                                    thumbnail: nil,
+                                    resourceURI: "",
+                                    comics: nil,
+                                    series: nil,
+                                    stories: nil,
+                                    events: nil,
+                                    urls: nil)
 
         XCTAssert(referenceDatabase.removeItem(c))
         let items = referenceDatabase.getItems()
@@ -42,6 +61,4 @@ class CharactersDatabaseTests: XCTestCase {
         XCTAssertNil(referenceDatabase.favoriteID)
         XCTAssertFalse(referenceDatabase.hasFavorite())
     }
-
-    
 }

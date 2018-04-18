@@ -20,7 +20,7 @@ extension UIImageViewAsync {
     public func imageFromServerURL(urlString: String) {
         task?.cancel()
         guard let url = URL(string: urlString) else { return }
-        self.task = URLSession.shared.dataTask(with: url , completionHandler: { (data, response, error) -> Void in
+        self.task = URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) -> Void in
             guard error == nil else { return }
             DispatchQueue.main.async(execute: { () -> Void in
                 guard let dataImage = data else { return }

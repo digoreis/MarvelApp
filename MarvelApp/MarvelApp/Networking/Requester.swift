@@ -15,7 +15,7 @@ enum RequestResult {
 }
 
 // MARK: - Enum of Error for API call
-enum NetworkingError : Error {
+enum NetworkingError: Error {
     case noData
     case noHttpError
     case notFound
@@ -29,7 +29,7 @@ protocol Requestable {
 }
 
 // MARK: - Requester Class to Abstract Payload of Marvel API
-class Requester<T : Codable>: Requestable {
+class Requester<T: Codable>: Requestable {
 
     static func get(_ request: Request, callback: @escaping (RequestResult) -> Void) {
         guard let url = request.generateURL() else { return }
@@ -61,7 +61,7 @@ class Requester<T : Codable>: Requestable {
     }
 
     func MD5(string: String) -> Data {
-        let messageData = string.data(using:.utf8)!
+        let messageData = string.data(using: .utf8)!
         var digestData = Data(count: Int(CC_MD5_DIGEST_LENGTH))
 
         _ = digestData.withUnsafeMutableBytes {digestBytes in

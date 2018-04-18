@@ -15,7 +15,7 @@ class UIFavoriteCharacter: UIView {
     @IBOutlet weak var btnOpen: UIButton!
     @IBOutlet weak var favoriteImage: UIImageViewAsync!
 
-    fileprivate var item : Character? {
+    fileprivate var item: Character? {
         didSet {
             if let i = item {
                 lblName.text = i.name
@@ -29,7 +29,7 @@ class UIFavoriteCharacter: UIView {
             }
         }
     }
-    fileprivate var callback : ((Character) -> Void)?
+    fileprivate var callback: ((Character) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,7 +62,7 @@ class UIFavoriteCharacter: UIView {
         Bundle.main.loadNibNamed(String(describing: UIFavoriteCharacter.self), owner: self, options: nil)
             addSubview(contentView)
             contentView.frame = self.bounds
-            contentView.autoresizingMask = [.flexibleHeight,.flexibleWidth]
+            contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 
 }

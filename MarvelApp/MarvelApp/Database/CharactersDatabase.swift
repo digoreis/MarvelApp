@@ -12,7 +12,7 @@ class CharactersDatabase {
     static let shared = CharactersDatabase()
 
     fileprivate var items = [Character]()
-    public var favoriteID : Int? {
+    public var favoriteID: Int? {
         didSet {
             saveLocal()
         }
@@ -21,7 +21,8 @@ class CharactersDatabase {
 
     init() {
         let defaults = UserDefaults.standard
-        self.favoriteID = defaults.integer(forKey: "MarvelAppFavoriteID") == 0 ? nil :  defaults.integer(forKey: "MarvelAppFavoriteID")
+        self.favoriteID = defaults.integer(forKey: "MarvelAppFavoriteID") == 0 ?
+            nil :  defaults.integer(forKey: "MarvelAppFavoriteID")
     }
 
     public func hasFavorite() -> Bool {
@@ -64,6 +65,4 @@ class CharactersDatabase {
         let defaults = UserDefaults.standard
         defaults.set(favoriteID, forKey: "MarvelAppFavoriteID")
     }
-
-
 }

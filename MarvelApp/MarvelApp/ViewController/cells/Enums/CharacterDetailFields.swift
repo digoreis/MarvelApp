@@ -9,8 +9,8 @@
 import UIKit
 
 enum CharacterDetailFields {
-    case label(String,String)
-    case text(String,String)
+    case label(String, String)
+    case text(String, String)
 }
 
 enum CharacterDataFields {
@@ -33,14 +33,12 @@ extension CharacterDetailFields {
     public func populateCell(_ cell: UITableViewCell?) {
         guard let cell = cell else { return }
         switch self {
-        case .label(let title,let text):
+        case .label(let title, let text):
             guard let labelCell = cell as? DetailLabelTableViewCell else { return }
             labelCell.setLabel(label: title, text: text)
-            break
-        case .text(let title,let text):
+        case .text(let title, let text):
             guard let labelCell = cell as? DetailTextTableViewCell else { return }
             labelCell.setLabel(label: title, text: text)
-            break
         }
     }
 }

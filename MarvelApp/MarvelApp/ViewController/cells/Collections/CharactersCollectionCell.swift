@@ -40,7 +40,7 @@ class CharactersCollectionCell: UICollectionViewCell {
         }
     }
 
-    public func populate(item: Character, viewModel: CharactersViewModelProtocol? = nil, favoriteID : Int = 0) {
+    public func populate(item: Character, viewModel: CharactersViewModelProtocol? = nil, favoriteID: Int = 0) {
         self.item = item
         self.viewModel = viewModel
         self.name.text = item.name

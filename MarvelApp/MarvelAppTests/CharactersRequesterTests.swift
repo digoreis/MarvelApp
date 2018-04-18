@@ -11,7 +11,6 @@ import XCTest
 
 class CharactersRequesterTests: XCTestCase {
 
-    
     func testCall() {
         let expectation = self.expectation(description: "NetworkingRequest1")
         let mock = CharactersProviderDelegateMock(expectation: expectation)

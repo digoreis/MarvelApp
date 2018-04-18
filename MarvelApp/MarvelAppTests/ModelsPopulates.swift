@@ -10,8 +10,7 @@ import XCTest
 @testable import MarvelApp
 
 class ModelsPopulates: XCTestCase {
-        
-    
+
     func testComic() {
         if let data = loadDataFromFile(name: "comic") {
             do {
@@ -79,5 +78,4 @@ class ModelsPopulates: XCTestCase {
         }
         XCTAssert(false)
     }
-    
 }

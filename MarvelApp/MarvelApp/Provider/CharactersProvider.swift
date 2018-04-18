@@ -19,7 +19,7 @@ protocol CharactersProviderDelegate: class {
 class CharactersProvider {
 
     weak var delegate: CharactersProviderDelegate?
-    private var characters : [Any]?
+    private var characters: [Any]?
     private var page = 0
     private var pageSize = 20
     private var total = 0
@@ -32,9 +32,9 @@ class CharactersProvider {
         self.delegate = delegate
     }
 
-    fileprivate func getParams() -> [String : String] {
+    fileprivate func getParams() -> [String: String] {
 
-        let params = ["limit" : "\(pageSize)", "offset": "\(page * pageSize)"]
+        let params = ["limit": "\(pageSize)", "offset": "\(page * pageSize)"]
         return params
     }
 
@@ -55,8 +55,8 @@ class CharactersProvider {
         }
     }
 
-    func getFavorite(id: Int) {
-        let request = Request(path: "\(self.pathForResource)/\(id)", params: [:])
+    func getFavorite(idFavorite: Int) {
+        let request = Request(path: "\(self.pathForResource)/\(idFavorite)", params: [:])
         Requester<Character>.get(request) { result in
             switch result {
             case .sucess(let value):
@@ -77,7 +77,10 @@ class CharactersProvider {
         Requester<MarvelApp.Character>.get(request) { result in
             switch result {
             case .sucess(let value):
-                guard let value = value as? PayloadRequest<MarvelApp.Character> else { self.delegate?.finishLoadPage(error: nil) ; return }
+                guard let value = value as? PayloadRequest<MarvelApp.Character> else {
+                    self.delegate?.finishLoadPage(error: nil)
+                    return
+                }
                 CharactersDatabase.shared.addItems(characters: value.data.results)
                 self.total = value.data.count
                 self.delegate?.finishLoadPage(error: nil)
@@ -92,8 +95,8 @@ class CharactersProvider {
     func getFavoriteID() -> Int? {
         return CharactersDatabase.shared.favoriteID
     }
-    func saveFavoriteID(id: Int) {
-        CharactersDatabase.shared.favoriteID = id
+    func saveFavoriteID(idFavorite: Int) {
+        CharactersDatabase.shared.favoriteID = idFavorite
     }
 
     func cleanFavoriteID() {

@@ -122,11 +122,10 @@
 		9E36DD6A204F2F8000670F5E /* CharacterDetailFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailFields.swift; sourceTree = "<group>"; };
 		9E36DD6D204F4C6900670F5E /* UIFavoriteCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFavoriteCharacter.swift; sourceTree = "<group>"; };
 		9E36DD6F204F7CF500670F5E /* UIFavoriteCharacter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIFavoriteCharacter.xib; sourceTree = "<group>"; };
-		9E7346AD2087BDC400A7C2A5 /* iOS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iOS; path = Carthage/Build/iOS; sourceTree = "<group>"; };
 		9E7346AF2087BE6800A7C2A5 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		9E7346B02087BE6800A7C2A5 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
-		9ECA97132087C84C008676CF /* ReSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ReSwift.framework.dSYM; path = Carthage/Build/iOS/ReSwift.framework.dSYM; sourceTree = "<group>"; };
-		9ECA97142087C84C008676CF /* PromiseKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = PromiseKit.framework.dSYM; path = Carthage/Build/iOS/PromiseKit.framework.dSYM; sourceTree = "<group>"; };
+		9ECA97132087C84C008676CF /* ReSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = ReSwift.framework.dSYM; sourceTree = "<group>"; };
+		9ECA97142087C84C008676CF /* PromiseKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = PromiseKit.framework.dSYM; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,8 +170,6 @@
 		9E0BE6A82045CC520045C7C4 = {
 			isa = PBXGroup;
 			children = (
-				9ECA97142087C84C008676CF /* PromiseKit.framework.dSYM */,
-				9ECA97132087C84C008676CF /* ReSwift.framework.dSYM */,
 				9E0BE6B32045CC520045C7C4 /* MarvelApp */,
 				9E0BE6C82045CC530045C7C4 /* MarvelAppTests */,
 				9E0BE6D32045CC530045C7C4 /* MarvelAppUITests */,
@@ -370,9 +367,10 @@
 		9E7346AC2087BDC400A7C2A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9ECA97142087C84C008676CF /* PromiseKit.framework.dSYM */,
+				9ECA97132087C84C008676CF /* ReSwift.framework.dSYM */,
 				9E7346AF2087BE6800A7C2A5 /* PromiseKit.framework */,
 				9E7346B02087BE6800A7C2A5 /* ReSwift.framework */,
-				9E7346AD2087BDC400A7C2A5 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -388,6 +386,7 @@
 				9E0BE6AE2045CC520045C7C4 /* Frameworks */,
 				9E0BE6AF2045CC520045C7C4 /* Resources */,
 				9ECA97172087C8C6008676CF /* ShellScript */,
+				9ECA97182087DA09008676CF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -531,6 +530,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		9ECA97182087DA09008676CF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n     echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

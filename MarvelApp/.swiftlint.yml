@@ -1,0 +1,12 @@
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+identifier_name:
+  min_length: 
+    error: 3 
+  excluded: 
+    - id
+    - key
+    - lhs
+    - rhs
+    - URL
+    - url
